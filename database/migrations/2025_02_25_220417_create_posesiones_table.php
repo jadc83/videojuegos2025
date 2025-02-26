@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('videojuego_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->unique(['videojuego_id', 'user_id']);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
