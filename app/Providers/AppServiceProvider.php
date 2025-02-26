@@ -22,8 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('poseer-videojuego', function (User $user, Videojuego $videojuego) {
-            return $user->videojuegos()->where('id', $videojuego->id)->exists();
-        });
+
     }
 }

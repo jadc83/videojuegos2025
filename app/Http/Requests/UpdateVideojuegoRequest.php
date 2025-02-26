@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Videojuego;
+use App\Models\Posesion;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -12,15 +12,15 @@ class UpdateVideojuegoRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize()
     {
         if (!Auth::check()) {
             abort(403, 'No hay ningún usuario logueado');
         }
 
-        $videojuego = $this->route('videojuego');
+        $videojuego_id = $this->route('videojuego')->id;
 
-        if (!Auth::user()->videojuegos->contains('id', $videojuego->id)) {
+        if (!Posesion::where('user_id', Auth::id())->where('videojuego_id', $videojuego_id)->exists()) {
             abort(403, 'No posees este videojuego');
         }
 
