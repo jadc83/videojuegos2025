@@ -1,0 +1,21 @@
+<?php
+
+use App\Http\Controllers\PosesionController;
+use App\Http\Controllers\VideojuegoController;
+use Illuminate\Support\Facades\Route;
+
+Route::view('/', 'welcome');
+
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
+
+Route::resource('videojuegos', VideojuegoController::class)->middleware(['auth']);
+Route::resource('posesiones', PosesionController::class)
+        ->parameters(['posesiones' => 'posesion']);
+
+require __DIR__.'/auth.php';
