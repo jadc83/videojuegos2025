@@ -49,9 +49,8 @@
                                     <a href="{{ route('videojuegos.show', $videojuego) }}">{{ $videojuego->titulo }}</a>
                                 </td>
 
-                                <!-- Precio -->
                                 <td class="px-6 py-4 text-center">
-                                    {{ $videojuego->salida }}€
+                                    {{ $videojuego->salida }}
                                 </td>
 
                                 <td class="px-6 py-4 text-center">
@@ -62,8 +61,7 @@
                                     {{ $videojuego->desarrolladora->distribuidora->nombre }}
                                 </td>
 
-                                <!-- Botón comprar -->
-                                <td class="px-6 py-4 text-center">
+                                <td class="px-6 py-4 text-center flex justify-between">
                                     <form action="{{ route('videojuegos.show', $videojuego) }}" method="GET">
                                         @csrf
                                         <x-primary-button>Detalles</x-primary-button>
