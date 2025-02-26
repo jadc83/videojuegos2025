@@ -68,7 +68,9 @@
                                     </form>
                                     <form action="{{ route('videojuegos.edit', $videojuego) }}" method="GET">
                                         @csrf
-                                        <x-primary-button>Editar</x-primary-button>
+                                        @can('poseer-videojuego')
+                                            <x-primary-button>Editar</x-primary-button>
+                                        @endcan
                                     </form>
                                     <form action="{{ route('videojuegos.destroy', $videojuego) }}" method="POST">
                                         @csrf
